@@ -128,6 +128,17 @@ Plug 'airblade/vim-gitgutter'
 " vim 里浏览代码提交记录
 Plug 'junegunn/gv.vim'
 
+" vim markdown 拓展
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" vim markdown 浏览
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+
+" vim markdown 光标生成目录
+Plug 'mzlogin/vim-markdown-toc'
+
 """"""""""
 """"""原文作者安装的插件
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -208,3 +219,51 @@ set completeopt-=preview
 
 " vim 显示文件变动设置
 set updatetime=100 "100ms变一次
+
+" vim markdown 拓展设置，增加 Latex 支持
+let g:vim_markdown_math = 1
+
+" vim markdown 浏览配置
+let g:mkdp_path_to_chrome = "/usr/bin/google-chrome"
+" Path to the chrome or the command to open chrome (or other modern browsers).
+" If set, g:mkdp_browserfunc would be ignored.
+
+let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
+" Callback Vim function to open browser, the only parameter is the url to open.
+
+let g:mkdp_auto_start = 0
+" Set to 1, Vim will open the preview window on entering the Markdown
+" buffer.
+
+let g:mkdp_auto_open = 0
+" Set to 1, Vim will automatically open the preview window when you edit a
+" Markdown file.
+
+let g:mkdp_auto_close = 1
+" Set to 1, Vim will automatically close the current preview window when
+" switching from one Markdown buffer to another.
+
+let g:mkdp_refresh_slow = 0
+" Set to 1, Vim will just refresh Markdown when saving the buffer or
+" leaving from insert mode. With default 0, it will automatically refresh
+" Markdown as you edit or move the cursor.
+
+let g:mkdp_command_for_global = 0
+" Set to 1, the MarkdownPreview command can be used for all files,
+" by default it can only be used in Markdown files.
+
+let g:mkdp_open_to_the_world = 0
+" Set to 1, the preview server will be available to others in your network.
+" By default, the server only listens on localhost (127.0.0.1).
+
+" for normal mode
+nmap <silent> <F8> <Plug>MarkdownPreview
+" for insert mode
+imap <silent> <F8> <Plug>MarkdownPreview
+" for normal mode
+nmap <silent> <F9> <Plug>StopMarkdownPreview
+" for insert mode
+imap <silent> <F9> <Plug>StopMarkdownPreview
+
+" vim markdown 光标生成目录设置
+let g:vmt_auto_update_on_save = 0
