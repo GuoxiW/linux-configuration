@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/guoxi/.oh-my-zsh"
@@ -72,11 +72,16 @@ plugins=(
 git
 colored-man-pages
 zsh-autosuggestions
+vi-mode
+zsh-completions
+history-substring-search
 )
 
+# git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+# git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 setopt no_nomatch
 source $ZSH/oh-my-zsh.sh
-
+autoload -U compinit && compinit
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -117,3 +122,8 @@ source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #export https_proxy=https://127.0.0.1:12333
 #export http_proxy=http://127.0.0.1:12333
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias tailf='tail -20f'

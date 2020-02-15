@@ -20,6 +20,8 @@ inoremap <leader>w <Esc>:w<cr>
 noremap <leader>w :w<cr>
 " 使用 jj 进入 normal 模式 
 inoremap jj <Esc>`^
+" 使用 leader+e 实现退出
+noremap <leader>e :q<cr>
 
 " 切换 buffer
 nnoremap <silent> [b :bprevious<CR>
@@ -102,6 +104,7 @@ Plug 'lfv89/vim-interestingwords'
 
 " vim 代码补全
 " 还有一个coc.nvim，没有安装
+" pip3 install --user pynvim
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -138,6 +141,13 @@ Plug 'iamcco/markdown-preview.vim'
 
 " vim markdown 光标生成目录
 Plug 'mzlogin/vim-markdown-toc'
+
+" vim 编译 C++ 插件
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
+
+" vim C++ 语法高亮
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 """"""""""
 """"""原文作者安装的插件
@@ -261,9 +271,52 @@ nmap <silent> <F8> <Plug>MarkdownPreview
 " for insert mode
 imap <silent> <F8> <Plug>MarkdownPreview
 " for normal mode
-nmap <silent> <F9> <Plug>StopMarkdownPreview
+nmap <silent> <F10> <Plug>StopMarkdownPreview
 " for insert mode
-imap <silent> <F9> <Plug>StopMarkdownPreview
+imap <silent> <F10> <Plug>StopMarkdownPreview
 
 " vim markdown 光标生成目录设置
 let g:vmt_auto_update_on_save = 0
+
+" vim 编译 C++ 插件设置
+" 自动打开 quickfix window ，高度为 6
+let g:asyncrun_open = 6
+noremap <silent><F5> :AsyncTask file-run<cr>
+noremap <silent><F9> :AsyncTask file-build<cr>
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
+noremap <silent><F6> :AsyncTask project-run<cr>
+noremap <silent><F7> :AsyncTask project-build<cr>
+" 设置 F10 打开/关闭 Quickfix 窗口
+nnoremap <F11> :call asyncrun#quickfix_toggle(6)<cr>
+let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml'] 
+
+" vim 静态检查设置 
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+let g:ale_sign_error = "\ue009\ue009"
+hi! clear SpellBad
+hi! clear SpellCap
+hi! clear SpellRare
+hi! SpellBad gui=undercurl guisp=red
+hi! SpellCap gui=undercurl guisp=blue
+hi! SpellRare gui=undercurl guisp=magenta
+
+" vim C++代码高亮设置
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_concepts_highlight = 1
