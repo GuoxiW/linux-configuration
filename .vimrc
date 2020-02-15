@@ -287,7 +287,7 @@ let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 noremap <silent><F6> :AsyncTask project-run<cr>
 noremap <silent><F7> :AsyncTask project-build<cr>
 " 设置 F10 打开/关闭 Quickfix 窗口
-nnoremap <F11> :call asyncrun#quickfix_toggle(6)<cr>
+nnoremap <F12> :call asyncrun#quickfix_toggle(6)<cr>
 let g:asyncrun_rootmarks = ['.svn', '.git', '.root', '_darcs', 'build.xml'] 
 
 " vim 静态检查设置 
