@@ -8,6 +8,7 @@ set pastetoggle=<F2>
 " 高亮搜索
 set hlsearch
 " 设置折叠方式
+" zR 打开所有折叠
 set foldmethod=indent
 syntax on
 
