@@ -104,7 +104,6 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'lfv89/vim-interestingwords'
 
 " vim 代码补全
-" 还有一个coc.nvim，没有安装
 " pip3 install --user pynvim
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -113,6 +112,12 @@ else
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+" vim 代码补全 coc.nvim
+" 安装完成后需要
+" :CocInstall coc-snippets
+Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " vim 代码格式化(需要配置)
 Plug 'sbdchd/neoformat'

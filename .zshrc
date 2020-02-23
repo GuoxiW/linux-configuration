@@ -76,6 +76,7 @@ vi-mode
 zsh-completions
 history-substring-search
 zsh-syntax-highlighting
+zsh-interactive-cd
 )
 
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -126,3 +127,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias tailf='tail -20f'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
