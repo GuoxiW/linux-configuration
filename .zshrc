@@ -143,3 +143,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [ `pwd` = "/mnt/c/Users/wang9" ]; then
+cd ~
+fi
