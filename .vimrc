@@ -326,3 +326,7 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_posix_standard = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
+
+" ubuntu18.04 viminfo 报错
+" mkdir -p ~/.vim/files/info
+set viminfo=%,<800,'10,/50,:100,h,f0,n~/.vim/files/info/viminfo
